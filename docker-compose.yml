@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    build: .
+    environment:
+        all_proxy: http://webdefence.global.blackspider.com:80/
+        http_proxy: http://webdefence.global.blackspider.com:80/
+        https_proxy: http://webdefence.global.blackspider.com:80/
+    ports:
+      - "4200:4200"
+      - "49152:49152"
+    volumes:
+      - .:/opt/certify
+    command: ng serve
